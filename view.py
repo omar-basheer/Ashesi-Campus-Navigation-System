@@ -13,18 +13,20 @@ b = np.array([[(220, 605),(278,490)]])
 
 SportsCentreToServiceCentre = np.array([[(458,151),(416,196),(470,240),(435,278)]])
 ServiceCentretoEnginerringWorkshop = np.array([[(435,278),(388,334)]])
-EngineeringWorkShopToHealthCenter = np.array([[(388,334),(348,378)]])
-HealthCentertoFablab = np.array([[(351,378),(318,420)]])
+EngineeringWorkShopToHealthCenter = np.array([[(388,334),(355,378)]])
+HealthCentertoFablab = np.array([[(355,378),(318,420)]])
 FablabtoGreenGate = np.array([[(318,420),(222,606)]])
-GreenGatetoKingEngineering = np.array([[(222,606),(278,652)]])
-GreenGatetoWarrenLibrary = np.array([[(222,606),(278,652),(276,680)]])
-list = [SportsCentreToServiceCentre,ServiceCentretoEnginerringWorkshop,EngineeringWorkShopToHealthCenter,
-        HealthCentertoFablab,FablabtoGreenGate,GreenGatetoWarrenLibrary]
-
+GreenGatetoKingEngineering = np.array([[(222,606),(278,652),(308,663)]])
+GreenGatetoWarrenLibrary = np.array([[(222,606),(278,652),(270,689)]])
+KingEngineeringtoNutorHall = np.array([[(308,663),(390,708)]])
+WarrenLibraryToAptHall = np.array([[(270,689),(283,706)]])
+list = [SportsCentreToServiceCentre,ServiceCentretoEnginerringWorkshop,EngineeringWorkShopToHealthCenter,HealthCentertoFablab,
+        FablabtoGreenGate, GreenGatetoWarrenLibrary, WarrenLibraryToAptHall]
+array = list[0]
 for i in range (len(list)-1):
-    array = list[0]
+    print("Array befor: ", array)
     array = np.append(array,list[i+1],axis=1)
-    print("Array: ",array)
+    print("Array after: ",array)
 
 # start_point = (50, 635)
 # # End coordinate, here (450, 450). It represents the bottom right corner of the image according to resolution
@@ -52,5 +54,5 @@ cv2.polylines(image,
 plt.imshow(image)
 plt.show()
 # cv2.imshow("Map", image)
-# cv2.waitKey(1000000)
+#cv2.waitKey(1000000)
 # cv2.destroyAllWindows()
