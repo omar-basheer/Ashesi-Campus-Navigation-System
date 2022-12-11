@@ -1,4 +1,5 @@
-from Search import *
+# from Search import *
+import Search
 
 class Problem:
     """This class represents a generic Problem to be solved by search"""
@@ -21,8 +22,9 @@ class CampusNavigationProb(Problem):
 
     def __init__(self, initial_state, goal_state):
         super().__init__(initial_state,goal_state)
-        self.map = initalize_map()
-        self.pixel_dict = initalize_pixelDict()
+        self.map = Search.initalize_map()
+        self.pixel_dict = Search.initalize_pixelDict()
+        self.aerial_coordinates = Search.initalize_aerial_coordinates()
 
     def goal_test(self, state):
         return (state == self.goal_state)
@@ -30,12 +32,9 @@ class CampusNavigationProb(Problem):
     def actions(self,state):
         neighbours = self.map.adjacency_list[state]
         successor_nodes = []
-        #weight = []
         for i in range(len(neighbours)):
             landmark = neighbours[i]
-            #transcost = neighbours[i].path_cost
             successor_nodes.append(landmark)
-            #weight.append(transcost)
 
         return successor_nodes
 

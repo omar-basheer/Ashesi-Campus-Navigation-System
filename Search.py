@@ -1,9 +1,14 @@
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
 import math
 from Graph import *
 from PriorityQueue import *
 from Problem import *
 
+image1 = cv2.imread('AerialView.jpg')
 
+image = cv2.cvtColor(image1, cv2.COLOR_BGR2RGB)
 
 
 def initalize_pixelDict():
@@ -50,22 +55,80 @@ def initalize_pixelDict():
     return pixel_dictionary
 
 
+def initalize_aerial_coordinates():
+    aerial_coordinates = dict()
+    aerial_coordinates["Sports Centre-Service Centre"] = np.array([[(458, 151), (416, 196), (470, 240), (435, 278)]])
+    aerial_coordinates["Service Centre-Sports Centre"] = np.array([[(435, 278), (470, 240), (416, 196), (458, 151)]])
+    aerial_coordinates["Service Centre-Engineering Workshop"] = np.array([[(435, 278), (388, 334)]])
+    aerial_coordinates["Engineering Workshop-Service Centre"] = np.array([[(388, 334), (435, 278)]])
+    aerial_coordinates["Engineering Workshop-Natembea Health Centre"] = np.array([[(388, 334), (355, 378)]])
+    aerial_coordinates["Natembea Health Centre-Engineering Workshop"] = np.array([[(355, 378), (388, 334)]])
+    aerial_coordinates["Natembea Health Centre-Fab Lab"] = np.array([[(355, 378), (318, 420)]])
+    aerial_coordinates["Fab Lab-Natembea Health Centre"] = np.array([[(318, 420), (355, 378)]])
+    aerial_coordinates["Fab Lab-Green Gate"] = np.array([[(318, 420), (222, 606)]])
+    aerial_coordinates["Green Gate-Fab Lab"] = np.array([[(222, 606), (318, 420)]])
+    aerial_coordinates["Green Gate-King Engineering Building"] = np.array([[(222, 606), (278, 652), (308, 663)]])
+    aerial_coordinates["King Engineering Building-Green Gate"] = np.array([[(308, 663), (278, 652), (222, 606)]])
+    aerial_coordinates["Green Gate-Warren Library"] = np.array([[(222, 606), (278, 652), (270, 689)]])
+    aerial_coordinates["Warren Library-Green Gate"] = np.array([[(270, 689), (278, 652), (222, 606)]])
+    aerial_coordinates["King Engineering Building-Nutor Hall"] = np.array([[(308, 663), (390, 708)]])
+    aerial_coordinates["Nutor Hall-King Engineering Building"] = np.array([[(390, 708), (308, 663)]])
+    aerial_coordinates["Nutor Hall-The Hive"] = np.array([[(390, 708), (426, 720), (477, 724)]])
+    aerial_coordinates["The Hive-Nutor Hall"] = np.array([[(477, 724), (426, 720), (390, 708)]])
+    aerial_coordinates["Warren Library-Apt Hall"] = np.array([[(270, 689), (283, 706)]])
+    aerial_coordinates["Apt Hall-Warren Library"] = np.array([[(283, 706), (270, 689)]])
+    aerial_coordinates["Warren Library-Radichel Hall"] = np.array([[(270, 689), (218, 727), (243, 745)]])
+    aerial_coordinates["Radichel Hall-Warren Library"] = np.array([[(243, 745), (218, 727), (270, 689)]])
+    aerial_coordinates["Radichel Hall-Jackson Hall"] = np.array([[(245, 745), (269, 755), (276, 741)]])
+    aerial_coordinates["Jackson Hall-Radichel Hall"] = np.array([[(276, 741), (269, 755), (245, 745)]])
+    aerial_coordinates["Jackson Hall-Founders Plaza"] = np.array([[(276, 741), (256, 783)]])
+    aerial_coordinates["Founders Plaza-Jackson Hall"] = np.array([[(256, 783), (276, 741)]])
+    aerial_coordinates["Radichel Hall-Founders Plaza"] = np.array([[(243, 745), (270, 752), (256, 783)]])
+    aerial_coordinates["Founders Plaza-Radichel Hall"] = np.array([[(256, 783), (270, 752), (243, 745)]])
+    aerial_coordinates["Collins Courtyard-Apt Hall"] = np.array([[(261, 680), (286, 698)]])
+    aerial_coordinates["Apt Hall-Collins Courtyard"] = np.array([[(286, 698), (261, 680)]])
+    aerial_coordinates["Collins Courtyard-Databank Foundation Hall"] = np.array(
+        [[(261, 680), (284, 701), (316, 715), (302, 733), (322, 746)]])
+    aerial_coordinates["Databank Foundation Hall-Collins Courtyard"] = np.array(
+        [[(322, 746), (302, 733), (316, 715), (284, 701), (261, 680)]])
+    aerial_coordinates["Collins Courtyard-Ashesi Bookshop"] = np.array(
+        [[(261, 680), (284, 701), (325, 713), (326, 708), (347, 715)]])
+    aerial_coordinates["Ashesi Bookshop-Collins Courtyard"] = np.array(
+        [[(347, 715), (326, 708), (325, 713), (284, 701), (261, 680)]])
+    aerial_coordinates["University Checkpoint-Munchies"] = np.array([[(54, 633), (127, 670), (145, 694), (182, 794),
+                                                                      (200, 828), (221, 855), (264, 887), (301, 908),
+                                                                      (362, 920), (421, 942), (426, 954), (386, 971)]])
+    aerial_coordinates["Munchies-University Checkpoint"] = np.array([[(386, 971), (426, 954), (421, 942), (362, 920),
+                                                                      (301, 908), (264, 887), (221, 855), (200, 828),
+                                                                      (182, 794), (145, 694), (127, 670), (54, 633)]])
+    aerial_coordinates["University Checkpoint-Founders Plaza"] = np.array(
+        [[(54, 633), (127, 670), (145, 694), (180, 774), (257, 813)]])
+    aerial_coordinates["Founders Plaza-University Checkpoint"] = np.array(
+        [[(257, 813), (180, 774), (145, 694), (127, 670), (54, 633)]])
+    aerial_coordinates["Thacher Arboretum-Green Gate"] = np.array([[(154, 647), (175, 633), (222, 606)]])
+    aerial_coordinates["Green Gate-Thacher Arboretum"] = np.array([[(222, 606), (175, 633), (154, 647)]])
+    aerial_coordinates["University Checkpoint-Thacher Arboretum"] = np.array(
+        [[(54, 633), (115, 661), (130, 660), (175, 633)]])
+    aerial_coordinates["Thacher Arboretum-University Checkpoint"] = np.array(
+        [[(175, 633), (130, 660), (115, 661), (54, 633)]])
+    aerial_coordinates["Thacher Arboretum-Munchies"] = np.array([[(175, 633), (130, 660), (145, 694), (182, 794),
+                                                                      (200, 828), (221, 855), (264, 887), (301, 908),
+                                                                      (362, 920), (421, 942), (426, 954), (386, 971)]])
+    aerial_coordinates["Munchies-Thacher Arboretum"] = np.array([[(386, 971), (426, 954), (421, 942), (362, 920),
+                                                                      (301, 908), (264, 887), (221, 855), (200, 828),
+                                                                      (182, 794), (145, 694),(130,660),(175,633)]])
+
+    return aerial_coordinates
+
+
 def initalize_map():
     AshesiMap = Graph()
 
-    AshesiMap.add_edge("Sports Centre", "Service Centre", 3, "From Sports Centre, go straight to the first building on your right")
-    AshesiMap.add_edge("Sports Centre", "Engineering Workshop", 7)
-    AshesiMap.add_edge("Sports Centre", "Natembea Health Centre", 10)
-    AshesiMap.add_edge("Sports Centre", "Fab Lab", 13, "Go straight to the fourth building on your right")
-    AshesiMap.add_edge("Sports Centre", "Thacher Arboretum", 20)
+    AshesiMap.add_edge("Sports Centre", "Service Centre", 3,
+                       "From Sports Centre, go straight to the first building on your right")
     AshesiMap.add_edge("Service Centre", "Engineering Workshop", 2)
-    AshesiMap.add_edge("Service Centre", "Natembea Health Centre", 3)
-    AshesiMap.add_edge("Service Centre", "Fab Lab", 5)
-    AshesiMap.add_edge("Engineering Workshop", "Fab Lab", 4)
     AshesiMap.add_edge("Engineering Workshop", "Natembea Health Centre", 3)
     AshesiMap.add_edge("Natembea Health Centre", "Fab Lab", 1)
-    AshesiMap.add_edge("Fab Lab", "King Engineering Building", 15, "Go straight and take the first left. Continue "
-                                                                   "straight to the first buildng on your left")
     AshesiMap.add_edge("Fab Lab", "Green Gate", 10)
     AshesiMap.add_edge("Green Gate", "Warren Library", 2)
     AshesiMap.add_edge("Green Gate", "King Engineering Building", 5)
@@ -83,18 +146,13 @@ def initalize_map():
     AshesiMap.add_edge("University Checkpoint", "Staff Housing", 7)
     AshesiMap.add_edge("University Checkpoint", "Founders Plaza", 15)
     AshesiMap.add_edge("University Checkpoint", "Thacher Arboretum", 13)
-    AshesiMap.add_edge("University Checkpoint", "Green Gate", 12)
-    AshesiMap.add_edge("Nutor Hall", "The Hive", 2, "Turn left and go straight. Turn right and use the staircase up to the Hive.")
+    AshesiMap.add_edge("Green Gate", "Thacher Arboretum", 2)
+    AshesiMap.add_edge("Munchies", "Thacher Arboretum", 12)
+    AshesiMap.add_edge("Nutor Hall", "The Hive", 2,
+                       "Turn left and go straight. Turn right and use the staircase up to the Hive.")
 
     AshesiMap.add_edge("Service Centre", "Sports Centre", 3)
-    AshesiMap.add_edge("Engineering Workshop", "Sports Centre", 7)
-    AshesiMap.add_edge("Natembea Health Centre", "Sports Centre", 10)
-    AshesiMap.add_edge("Fab Lab", "Sports Centre", 13)
-    AshesiMap.add_edge("Thacher Arboretum", "Sports Centre", 20)
     AshesiMap.add_edge("Engineering Workshop", "Service Centre", 2)
-    AshesiMap.add_edge("Natembea Health Centre", "Service Centre", 3)
-    AshesiMap.add_edge("Fab Lab", "Service Centre", 5)
-    AshesiMap.add_edge("Fab Lab", "Engineering Workshop", 4)
     AshesiMap.add_edge("Natembea Health Centre", "Engineering Workshop", 3)
     AshesiMap.add_edge("Fab Lab", "Natembea Health Centre", 1)
     AshesiMap.add_edge("King Engineering Building", "Fab Lab", 15)
@@ -114,8 +172,9 @@ def initalize_map():
     AshesiMap.add_edge("Munchies", "University Checkpoint", 25)
     AshesiMap.add_edge("Staff Housing", "University Checkpoint", 7)
     AshesiMap.add_edge("Founders Plaza", "University Checkpoint", 15)
+    AshesiMap.add_edge("Thacher Arboretum", "Green Gate", 2)
     AshesiMap.add_edge("Thacher Arboretum", "University Checkpoint", 13)
-    AshesiMap.add_edge("Green Gate", "University Checkpoint", 12)
+    AshesiMap.add_edge("Thacher Arboretum", "Munchies", 12)
     AshesiMap.add_edge("The Hive", "Nutor Hall", 2)
 
     return AshesiMap
@@ -131,8 +190,11 @@ def heuristic(current_state, goal_state, pixel_dict):  # string current state an
     goal_y = goal_pixel[1]
     x_squared = pow(goal_x - start_x, 2)
     y_squared = pow(goal_y - start_y, 2)
-    heuristic = math.sqrt(x_squared + y_squared)
-    return heuristic
+    heuristic_val = math.sqrt(x_squared + y_squared)
+    return heuristic_val
+
+
+
 
 def aStarSearch(problem):
     explored = set()
@@ -149,10 +211,13 @@ def aStarSearch(problem):
         print("popped node: ", node)
         print("frontier: ", frontier)
 
+        if node.state in explored:
+            continue
+
         if (problem.goal_test(node.state)):
             print("Found a solution! ", node)
-            path = solution_path(predecessors,problem.initial_state,problem.goal_state)
-            #INCOMPLETE
+            path = solution_path(predecessors, problem.initial_state, problem.goal_state)
+            # INCOMPLETE
             return path
 
         explored.add(node.state)
@@ -160,20 +225,16 @@ def aStarSearch(problem):
         successors = problem.actions(node.state)
         print("successors: ", successors)
         for i in range(len(successors)):
-             child = successors[i]
-             distance = successors[i].path_cost
-             f_value = transcost[node.state] + distance + heuristic(child.state,problem.goal_state,problem.pixel_dict)
-             frontier.add(child, priority= f_value)
-             print("estimated overall cost: ", child.state, f_value)
+            child = successors[i]
+            distance = successors[i].path_cost
+            added_cost = transcost[node.state] + distance
 
-
-             if child.state not in transcost or transcost[node.state] + distance  < transcost[child.state]:
-                print("edgecost of successor?: ", distance)
-                print("transcost to node?: ", transcost[node.state])
-                transcost[child.state] = transcost[node.state] + distance
-                print("now, transcost to node?: ", transcost[child.state])
-                print("this one: ", child.state, transcost[child.state])
+            if child.state not in transcost or added_cost < transcost[child.state]:
+                transcost[child.state] = added_cost
+                priority = added_cost + heuristic(child.state,problem.goal_state,problem.pixel_dict)
+                frontier.add(child,priority)
                 predecessors[child.state] = node.state
+
 
         print("frontier: ", frontier)
         print()
@@ -188,9 +249,29 @@ def solution_path(predecessors, start, goal):
     return list(reversed(path))
 
 
+def display_path(solution):
+    list = []
+    for i in range(len(solution) - 1):
+        list.append(myProb.aerial_coordinates[solution[i] + "-" + solution[i + 1]])
+
+    array = list[0]
+    for i in range(len(list) - 1):
+        array = np.append(array, list[i + 1], axis=1)
+
+    cv2.polylines(image,array,isClosed=False,color=(0, 0, 230),thickness=3)
+    plt.imshow(image)
+    plt.show()
+
+
 if __name__ == "__main__":
-    myProb = CampusNavigationProb("Munchies", "Sports Centre")
+    myProb = CampusNavigationProb("Sports Centre","Munchies")
+    # myProb = CampusNavigationProb("Munchies", "Ashesi Bookshop")
     myProb.display_prob()
 
     solution = aStarSearch(myProb)
     print(solution)
+    display_path(solution)
+
+
+
+    #Update code with ever possible path
