@@ -17,7 +17,7 @@ def initalize_pixelDict():
     pixel_dictionary["Warren Library"] = (472.13, 1237.95)
     pixel_dictionary["Apt Hall"] = (552.40, 1252.50)
     pixel_dictionary["Jackson Hall"] = (517.50, 1379.70)
-    pixel_dictionary["DataBank Foundation Hall"] = (585.90, 1338.10)
+    pixel_dictionary["Databank Foundation Hall"] = (585.90, 1338.10)
     pixel_dictionary["Ashesi Bookshop"] = (647.10, 1299.10)
     pixel_dictionary["King Engineering Building"] = (579.70, 1118.00)
     pixel_dictionary["Nutor Hall"] = (721.90, 1227.80)
@@ -51,6 +51,7 @@ def initalize_pixelDict():
     pixel_dictionary["University Checkpoint"] = (68.50, 1122.30)
     pixel_dictionary["Green Gate"] = (492.30, 1180.20)
     pixel_dictionary["Munchies"] = (472.13, 1237.95)
+
 
     return pixel_dictionary
 
@@ -117,6 +118,36 @@ def initalize_aerial_coordinates():
     aerial_coordinates["Munchies-Thacher Arboretum"] = np.array([[(386, 971), (426, 954), (421, 942), (362, 920),
                                                                       (301, 908), (264, 887), (221, 855), (200, 828),
                                                                       (182, 794), (145, 694),(130,660),(175,633)]])
+    aerial_coordinates["The Hive-Porters' Lodge"] = np.array([[(456,724),(429,722),(429,736),(454,765),(487,783),(484,814)]])
+    aerial_coordinates["Porters' Lodge-The Hive"] = np.array([[(484, 814),(487, 783), (454, 765),(429, 736), (429, 722),(456, 724)]])
+    aerial_coordinates["Porters' Lodge-Munchies"] = np.array([[(482,836),(482,853),(493,874), (496,953),(484,960),(426,956),(400,963)]])
+    aerial_coordinates["Munchies-Porters' Lodge"] = np.array([[(400, 963), (426, 956), (484, 960), (496, 953), (493, 874),(482, 853), (482, 836)]])
+    aerial_coordinates["Mathaai Hall-Hall 2C"] = np.array([[(510,833),(563,831),(605,823),(604,817)]])
+    aerial_coordinates["Hall 2C-Mathaai Hall"] = np.array([[(604, 817),(605, 823), (563, 831),(510, 833)]])
+    aerial_coordinates["Porters' Lodge-Mathaai Hall"] = np.array([[(491,829),(506,830),(533,830)]])
+    aerial_coordinates["Mathaai Hall-Porters' Lodge"] = np.array([[(533, 830),(506, 830),(491, 829)]])
+    aerial_coordinates["Porters' Lodge-Tawiah Hall"] =np.array([[(496,829),(506,831),(534,866)]])
+    aerial_coordinates["Tawiah Hall-Porters' Lodge"] = np.array([[(534,866),(506,831),(496,829)]])
+    aerial_coordinates["The Grill-Porters' Lodge"] = np.array([[(406,743),(419,758),(433,760),(454,766),(485,782),(486,815)]])
+    aerial_coordinates["Porters' Lodge-The Grill"] = np.array([[(486, 815), (485, 782),(454, 766),(433, 760), (419, 758),(406, 743)]])
+    aerial_coordinates["Porters' Lodge-Amu Hall"] = np.array([[(469,827),(439,828)]])
+    aerial_coordinates["Porters' Lodge-Sisulu Hall"] = np.array([[(482,839),(482,853),(465,877)]])
+    aerial_coordinates["Sisulu Hall-Porters' Lodge"] = np.array([[(465, 877),(482, 853),(482, 839)]])
+    aerial_coordinates["Amu Hall-Bliss Lounge"] = np.array([[(439,828),(404,829),(389,838),(389,831)]])
+    aerial_coordinates["Bliss Lounge-Amu Hall"] = np.array([[(389, 831), (389, 838),(404, 829),(439, 828)]])
+    aerial_coordinates["Bliss Lounge-Sutherland Hall"] = np.array([[(387,838),(363,838)]])
+    aerial_coordinates["Sutherland Hall-Bliss Lounge"] = np.array([[(363, 838),(387, 838)]])
+    aerial_coordinates["Bliss Lounge-Oteng Korankye II Hall"] = np.array([[(381,833),(381,843),(381,878),(379,878)]])
+    aerial_coordinates["Oteng Korankye II Hall-Bliss Lounge"] = np.array([[ (379, 878),(381, 878), (381, 843), (381, 833)]])
+    aerial_coordinates["Databank Foundation Hall-Sutherland Hall"] = np.array([[(365,755),(351,776),(341,777),(317,794),(319,823)]])
+    aerial_coordinates["Sutherland Hall-Databank Foundation Hall"] = np.array([[(319, 823), (317, 794),  (341, 777), (351, 776),(365, 755)]])
+    aerial_coordinates["Ashesi Bookshop-Nutor Hall"] = np.array([[(352,712),(361,690),(375,696)]])
+    aerial_coordinates["Nutor Hall-Ashesi Bookshop"] = np.array([[ (375, 696),(361, 690),(352, 712)]])
+    aerial_coordinates["Databank Foundation Hall-The Grill"] = np.array([[(362,757),(372,737)]])
+    aerial_coordinates["The Grill-Databank Foundation Hall"] = np.array([[(372, 737),(362, 757)]])
+    aerial_coordinates["Nutor Hall-The Grill"] = np.array([[(384,704),(374,735)]])
+    aerial_coordinates["The Grill-Nutor Hall"] = np.array([[(374,735),(384,704)]])
+    aerial_coordinates["The Hive-The Grill"] = np.array([[(472,722),(430,722),(430,737),(439,758),(439,758)]])
 
     return aerial_coordinates
 
@@ -140,16 +171,39 @@ def initalize_map():
     AshesiMap.add_edge("Jackson Hall", "Founders Plaza", 2)
     AshesiMap.add_edge("Radichel Hall", "Founders Plaza", 2)
     AshesiMap.add_edge("Apt Hall", "Collins Courtyard", 1)
-    AshesiMap.add_edge("Collins Courtyard", "DataBank Foundation Hall", 1)
+    AshesiMap.add_edge("Collins Courtyard", "Databank Foundation Hall", 1)
     AshesiMap.add_edge("Collins Courtyard", "Ashesi Bookshop", 1)
     AshesiMap.add_edge("University Checkpoint", "Munchies", 25)
-    AshesiMap.add_edge("University Checkpoint", "Staff Housing", 7)
     AshesiMap.add_edge("University Checkpoint", "Founders Plaza", 15)
     AshesiMap.add_edge("University Checkpoint", "Thacher Arboretum", 13)
     AshesiMap.add_edge("Green Gate", "Thacher Arboretum", 2)
     AshesiMap.add_edge("Munchies", "Thacher Arboretum", 12)
-    AshesiMap.add_edge("Nutor Hall", "The Hive", 2,
-                       "Turn left and go straight. Turn right and use the staircase up to the Hive.")
+    AshesiMap.add_edge("Nutor Hall", "The Hive", 2)
+
+
+
+    AshesiMap.add_edge("The Hive","Porters' Lodge",2)
+
+    AshesiMap.add_edge("Porters' Lodge",'Munchies',1)
+    AshesiMap.add_edge("Porters' Lodge", 'Mathaai Hall', 1)
+    AshesiMap.add_edge("Porters' Lodge", 'Tawiah Hall', 5)
+    AshesiMap.add_edge("Mathaai Hall", "Hall 2C", 2)
+    AshesiMap.add_edge("Tawiah Hall", 'Hall 2D', 2)
+    AshesiMap.add_edge("The Grill", "Porters' Lodge", 6)
+    AshesiMap.add_edge("Porters' Lodge", 'Amu Hall', 1)
+    AshesiMap.add_edge("Porters' Lodge", 'Sisulu Hall', 3)
+    AshesiMap.add_edge("Amu Hall", 'Bliss Lounge', 1)
+    AshesiMap.add_edge("Bliss Lounge", 'Sutherland Hall', 1)
+    AshesiMap.add_edge("Bliss Lounge", 'Oteng Korankye II Hall', 3)
+    AshesiMap.add_edge("Databank Foundation Hall", 'Sutherland Hall', 13)
+    AshesiMap.add_edge("Ashesi Bookshop", 'Nutor Hall', 2)
+    AshesiMap.add_edge("The Hive","The Grill", 5)
+    AshesiMap.add_edge("Nutor Hall", 'The Grill', 3)
+    AshesiMap.add_edge("Databank Foundation Hall", 'The Grill', 2)
+
+
+
+
 
     AshesiMap.add_edge("Service Centre", "Sports Centre", 3)
     AshesiMap.add_edge("Engineering Workshop", "Service Centre", 2)
@@ -167,15 +221,34 @@ def initalize_map():
     AshesiMap.add_edge("Founders Plaza", "Jackson Hall", 2)
     AshesiMap.add_edge("Founders Plaza", "Radichel Hall", 2)
     AshesiMap.add_edge("Collins Courtyard", "Apt Hall", 1)
-    AshesiMap.add_edge("DataBank Foundation Hall", "Collins Courtyard", 1)
+    AshesiMap.add_edge("Databank Foundation Hall", "Collins Courtyard", 1)
     AshesiMap.add_edge("Ashesi Bookshop", "Collins Courtyard", 1)
     AshesiMap.add_edge("Munchies", "University Checkpoint", 25)
-    AshesiMap.add_edge("Staff Housing", "University Checkpoint", 7)
     AshesiMap.add_edge("Founders Plaza", "University Checkpoint", 15)
     AshesiMap.add_edge("Thacher Arboretum", "Green Gate", 2)
     AshesiMap.add_edge("Thacher Arboretum", "University Checkpoint", 13)
     AshesiMap.add_edge("Thacher Arboretum", "Munchies", 12)
     AshesiMap.add_edge("The Hive", "Nutor Hall", 2)
+
+
+
+    AshesiMap.add_edge("Porters' Lodge","The Hive", 9)
+    AshesiMap.add_edge('Munchies', "Porters' Lodge", 11)
+    AshesiMap.add_edge('Mathaai Hall',"Porters' Lodge",  1)
+    AshesiMap.add_edge('Tawiah Hall',"Porters' Lodge",  5)
+    AshesiMap.add_edge("Hall 2C", "Mathaai Hall", 2)
+    AshesiMap.add_edge('Hall 2D',"Tawiah Hall", 2)
+    AshesiMap.add_edge("Porters' Lodge","The Grill", 6)
+    AshesiMap.add_edge('Amu Hall',"Porters' Lodge", 1)
+    AshesiMap.add_edge('Sisulu Hall',"Porters' Lodge", 3)
+    AshesiMap.add_edge('Bliss Lounge',"Amu Hall", 1)
+    AshesiMap.add_edge('SutherLand Hall',"Bliss Lounge", 1)
+    AshesiMap.add_edge('Oteng Korankye II Hall', "Bliss Lounge", 3)
+    AshesiMap.add_edge('Sutherland Hall',"Databank Foundation Hall",  13)
+    AshesiMap.add_edge('Nutor Hall',"Ashesi Bookshop", 2)
+    AshesiMap.add_edge("The Grill","The Hive",5)
+    AshesiMap.add_edge('The Grill',"Nutor Hall", 3)
+    AshesiMap.add_edge('The Grill',"Databank Foundation Hall", 2)
 
     return AshesiMap
 
@@ -205,6 +278,7 @@ def aStarSearch(problem):
     print(start)
     transcost[start.state] = 0
     frontier.add(start)
+    maxl = len(frontier)
 
     while frontier:
         node = frontier.pop()
@@ -216,6 +290,8 @@ def aStarSearch(problem):
 
         if (problem.goal_test(node.state)):
             print("Found a solution! ", node)
+            print("Max frontier length: ", maxl)
+            print("Nodes processed: ", len(explored))
             path = solution_path(predecessors, problem.initial_state, problem.goal_state)
             # INCOMPLETE
             return path
@@ -233,6 +309,8 @@ def aStarSearch(problem):
                 transcost[child.state] = added_cost
                 priority = added_cost + heuristic(child.state,problem.goal_state,problem.pixel_dict)
                 frontier.add(child,priority)
+                if  len(frontier) > maxl:
+                    maxl = len(frontier)
                 predecessors[child.state] = node.state
 
 
@@ -264,7 +342,7 @@ def display_path(solution):
 
 
 if __name__ == "__main__":
-    myProb = CampusNavigationProb("Sports Centre","Munchies")
+    myProb = CampusNavigationProb("The Hive", "Munchies")
     # myProb = CampusNavigationProb("Munchies", "Ashesi Bookshop")
     myProb.display_prob()
 

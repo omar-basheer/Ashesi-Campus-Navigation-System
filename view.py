@@ -110,9 +110,9 @@ cv2.polylines(image,
               color = (0,0,230),
               thickness = 3)
 # cv2.imshow("s:",image)
-
-plt.imshow(image)
-plt.show()
-# cv2.imshow("Map", image)
-# cv2.waitKey(1000000)
-# cv2.destroyAllWindows()
+#
+# plt.imshow(image)
+# plt.show()
+cv2.imshow("Map", image1)
+cv2.waitKey(1000000)
+cv2.destroyAllWindows()
