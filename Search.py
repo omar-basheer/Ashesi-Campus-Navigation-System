@@ -92,9 +92,9 @@ def initalize_aerial_coordinates():
         [[(261, 680), (284, 701), (316, 715), (302, 733), (322, 746)]])
     aerial_coordinates["Databank Foundation Hall-Archer Cornfield"] = np.array(
         [[(322, 746), (302, 733), (316, 715), (284, 701), (261, 680)]])
-    aerial_coordinates["Collins Courtyard-Ashesi Bookshop"] = np.array(
+    aerial_coordinates["Archer Cornfield-Ashesi Bookshop"] = np.array(
         [[(261, 680), (284, 701), (325, 713), (326, 708), (347, 715)]])
-    aerial_coordinates["Ashesi Bookshop-Collins Courtyard"] = np.array(
+    aerial_coordinates["Ashesi Bookshop-Archer Cornfield"] = np.array(
         [[(347, 715), (326, 708), (325, 713), (284, 701), (261, 680)]])
     aerial_coordinates["University Checkpoint-Munchies"] = np.array([[(54, 633), (127, 670), (145, 694), (182, 794),
                                                                       (200, 828), (221, 855), (264, 887), (301, 908),
@@ -148,6 +148,8 @@ def initalize_aerial_coordinates():
     aerial_coordinates["Nutor Hall-The Grill"] = np.array([[(384,704),(374,735)]])
     aerial_coordinates["The Grill-Nutor Hall"] = np.array([[(374,735),(384,704)]])
     aerial_coordinates["The Hive-The Grill"] = np.array([[(472,722),(430,722),(430,737),(439,758),(439,758)]])
+    aerial_coordinates["Apt Hall-Ashesi Bookshop"] = np.array([[(328,703),(348,713)]])
+    aerial_coordinates["Ashesi Bookshop-Apt Hall"] = np.array([[(348, 713),(328, 703)]])
 
     return aerial_coordinates
 
@@ -167,12 +169,12 @@ def initalize_map():
     AshesiMap.add_edge("Radichel Hall", "Warren Library", 5)
     AshesiMap.add_edge("Warren Library", "Apt Hall", 3)
     AshesiMap.add_edge("Radichel Hall", "Jackson Hall", 2)
-    AshesiMap.add_edge("Jackson Hall", "Collins Courtyard", 2)
+    AshesiMap.add_edge("Jackson Hall", "Archer Cornfield", 2)
     AshesiMap.add_edge("Jackson Hall", "Founders Plaza", 2)
     AshesiMap.add_edge("Radichel Hall", "Founders Plaza", 2)
-    AshesiMap.add_edge("Apt Hall", "Collins Courtyard", 1)
-    AshesiMap.add_edge("Collins Courtyard", "Databank Foundation Hall", 1)
-    AshesiMap.add_edge("Collins Courtyard", "Ashesi Bookshop", 1)
+    AshesiMap.add_edge("Apt Hall", "Archer Cornfield", 1)
+    AshesiMap.add_edge("Archer Cornfield", "Databank Foundation Hall", 1)
+    # AshesiMap.add_edge("Collins Courtyard", "Ashesi Bookshop", 1)
     AshesiMap.add_edge("University Checkpoint", "Munchies", 25)
     AshesiMap.add_edge("University Checkpoint", "Founders Plaza", 15)
     AshesiMap.add_edge("University Checkpoint", "Thacher Arboretum", 13)
@@ -199,6 +201,8 @@ def initalize_map():
     AshesiMap.add_edge("The Hive","The Grill", 5)
     AshesiMap.add_edge("Nutor Hall", 'The Grill', 3)
     AshesiMap.add_edge("Databank Foundation Hall", 'The Grill', 2)
+    AshesiMap.add_edge("Apt Hall", "Ashesi Bookshop", 2)
+    AshesiMap.add_edge("Ashesi Bookshop","Apt Hall", 2)
 
 
 
@@ -216,12 +220,12 @@ def initalize_map():
     AshesiMap.add_edge("Warren Library", "Radichel Hall", 5)
     AshesiMap.add_edge("Apt Hall", "Warren Library", 3)
     AshesiMap.add_edge("Jackson Hall", "Radichel Hall", 2)
-    AshesiMap.add_edge("Collins Courtyard", "Jackson Hall", 2)
+    AshesiMap.add_edge("Archer Cornfield", "Jackson Hall", 2)
     AshesiMap.add_edge("Founders Plaza", "Jackson Hall", 2)
     AshesiMap.add_edge("Founders Plaza", "Radichel Hall", 2)
-    AshesiMap.add_edge("Collins Courtyard", "Apt Hall", 1)
-    AshesiMap.add_edge("Databank Foundation Hall", "Collins Courtyard", 1)
-    AshesiMap.add_edge("Ashesi Bookshop", "Collins Courtyard", 1)
+    AshesiMap.add_edge("Archer Cornfield", "Apt Hall", 1)
+    AshesiMap.add_edge("Databank Foundation Hall", "Archer Cornfield", 1)
+    # AshesiMap.add_edge("Ashesi Bookshop", "Collins Courtyard", 1)
     AshesiMap.add_edge("Munchies", "University Checkpoint", 25)
     AshesiMap.add_edge("Founders Plaza", "University Checkpoint", 15)
     AshesiMap.add_edge("Thacher Arboretum", "Green Gate", 2)
@@ -345,7 +349,7 @@ def display_path(solution):
 
 
 if __name__ == "__main__":
-    myProb = CampusNavigationProb("Collins Courtyard", "Databank Foundation Hall")
+    myProb = CampusNavigationProb("Jackson Hall", "Ashesi Bookshop")
     # myProb = CampusNavigationProb("Munchies", "Ashesi Bookshop")
     myProb.display_prob()
 
