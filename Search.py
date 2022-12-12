@@ -30,9 +30,9 @@ def initalize_pixelDict():
     pixel_dictionary["Basketball Court"] = (740.20, 1517.30)
     pixel_dictionary["Volleyball Court"] = (1115.90, 1515.90)
     pixel_dictionary["Isolation Wards"] = (1264.50, 1743.30)
-    pixel_dictionary["Archer Cornfield Courtyard"] = (350.30, 1203.50)
+    pixel_dictionary["Archer Cornfield"] = (350.30, 1203.50)
     pixel_dictionary["Founders Plaza"] = (466.10, 1412.90)
-    pixel_dictionary["Collins Courtyard"] = (561.80, 1313.10)
+    #pixel_dictionary["Archer Cornfield"] = (561.80, 1313.10)
     pixel_dictionary["Porters' Lodge"] = (871.40, 1499.40)
     pixel_dictionary["Thacher Arboretum"] = (354.20, 1209.70)
     pixel_dictionary["Sutherland Hall"] = (641.80, 1484.50)
@@ -86,11 +86,11 @@ def initalize_aerial_coordinates():
     aerial_coordinates["Founders Plaza-Jackson Hall"] = np.array([[(256, 783), (276, 741)]])
     aerial_coordinates["Radichel Hall-Founders Plaza"] = np.array([[(243, 745), (270, 752), (256, 783)]])
     aerial_coordinates["Founders Plaza-Radichel Hall"] = np.array([[(256, 783), (270, 752), (243, 745)]])
-    aerial_coordinates["Collins Courtyard-Apt Hall"] = np.array([[(261, 680), (286, 698)]])
-    aerial_coordinates["Apt Hall-Collins Courtyard"] = np.array([[(286, 698), (261, 680)]])
-    aerial_coordinates["Collins Courtyard-Databank Foundation Hall"] = np.array(
+    aerial_coordinates["Archer Cornfield-Apt Hall"] = np.array([[(261, 680), (286, 698)]])
+    aerial_coordinates["Apt Hall-Archer Cornfield"] = np.array([[(286, 698), (261, 680)]])
+    aerial_coordinates["Archer Cornfield-Databank Foundation Hall"] = np.array(
         [[(261, 680), (284, 701), (316, 715), (302, 733), (322, 746)]])
-    aerial_coordinates["Databank Foundation Hall-Collins Courtyard"] = np.array(
+    aerial_coordinates["Databank Foundation Hall-Archer Cornfield"] = np.array(
         [[(322, 746), (302, 733), (316, 715), (284, 701), (261, 680)]])
     aerial_coordinates["Collins Courtyard-Ashesi Bookshop"] = np.array(
         [[(261, 680), (284, 701), (325, 713), (326, 708), (347, 715)]])
@@ -182,16 +182,15 @@ def initalize_map():
 
 
 
-    AshesiMap.add_edge("The Hive","Porters' Lodge",2)
-
-    AshesiMap.add_edge("Porters' Lodge",'Munchies',1)
-    AshesiMap.add_edge("Porters' Lodge", 'Mathaai Hall', 1)
-    AshesiMap.add_edge("Porters' Lodge", 'Tawiah Hall', 5)
+    AshesiMap.add_edge("The Hive","Porters' Lodge",5)
+    AshesiMap.add_edge("Porters' Lodge", "Munchies", 1)
+    AshesiMap.add_edge("Porters' Lodge", "Mathaai Hall", 1)
+    AshesiMap.add_edge("Porters' Lodge", "Tawiah Hall", 5)
     AshesiMap.add_edge("Mathaai Hall", "Hall 2C", 2)
-    AshesiMap.add_edge("Tawiah Hall", 'Hall 2D', 2)
+    AshesiMap.add_edge("Tawiah Hall", "Hall 2D", 2)
     AshesiMap.add_edge("The Grill", "Porters' Lodge", 6)
-    AshesiMap.add_edge("Porters' Lodge", 'Amu Hall', 1)
-    AshesiMap.add_edge("Porters' Lodge", 'Sisulu Hall', 3)
+    AshesiMap.add_edge("Porters' Lodge", "Amu Hall", 1)
+    AshesiMap.add_edge("Porters' Lodge", "Sisulu Hall", 3)
     AshesiMap.add_edge("Amu Hall", 'Bliss Lounge', 1)
     AshesiMap.add_edge("Bliss Lounge", 'Sutherland Hall', 1)
     AshesiMap.add_edge("Bliss Lounge", 'Oteng Korankye II Hall', 3)
@@ -232,7 +231,7 @@ def initalize_map():
 
 
 
-    AshesiMap.add_edge("Porters' Lodge","The Hive", 9)
+    AshesiMap.add_edge("Porters' Lodge","The Hive", 5)
     AshesiMap.add_edge('Munchies', "Porters' Lodge", 11)
     AshesiMap.add_edge('Mathaai Hall',"Porters' Lodge",  1)
     AshesiMap.add_edge('Tawiah Hall',"Porters' Lodge",  5)
@@ -293,7 +292,6 @@ def aStarSearch(problem):
             print("Max frontier length: ", maxl)
             print("Nodes processed: ", len(explored))
             path = solution_path(predecessors, problem.initial_state, problem.goal_state)
-            # INCOMPLETE
             return path
 
         explored.add(node.state)
@@ -337,12 +335,17 @@ def display_path(solution):
         array = np.append(array, list[i + 1], axis=1)
 
     cv2.polylines(image,array,isClosed=False,color=(0, 0, 230),thickness=3)
+    coordinates = array[-1][-1]
+    radius = 15
+    color = (255, 0, 0)
+    thickness = -1
+    cv2.circle(image,coordinates,radius,color,thickness)
     plt.imshow(image)
     plt.show()
 
 
 if __name__ == "__main__":
-    myProb = CampusNavigationProb("The Hive", "Munchies")
+    myProb = CampusNavigationProb("Collins Courtyard", "Databank Foundation Hall")
     # myProb = CampusNavigationProb("Munchies", "Ashesi Bookshop")
     myProb.display_prob()
 
@@ -352,4 +355,3 @@ if __name__ == "__main__":
 
 
 
-    #Update code with ever possible path
