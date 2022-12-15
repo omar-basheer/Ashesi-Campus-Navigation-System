@@ -158,15 +158,14 @@ def initalize_aerial_coordinates():
 def initalize_map():
     AshesiMap = Graph()
 
-    AshesiMap.add_edge("Sports Centre", "Service Centre", 3,
-                       "From Sports Centre, go straight to the first building on your right")
+    AshesiMap.add_edge("Sports Centre", "Service Centre", 3)
     AshesiMap.add_edge("Service Centre", "Engineering Workshop", 2)
     AshesiMap.add_edge("Engineering Workshop", "Natembea Health Centre", 3)
     AshesiMap.add_edge("Natembea Health Centre", "Fab Lab", 1)
     AshesiMap.add_edge("Fab Lab", "Green Gate", 10)
     AshesiMap.add_edge("Green Gate", "Warren Library", 2)
     AshesiMap.add_edge("Green Gate", "King Engineering Building", 5)
-    AshesiMap.add_edge("King Engineering Building", "Nutor Hall", 2, "Go straight to the next building")
+    AshesiMap.add_edge("King Engineering Building", "Nutor Hall", 2)
     AshesiMap.add_edge("Radichel Hall", "Warren Library", 5)
     AshesiMap.add_edge("Warren Library", "Apt Hall", 3)
     AshesiMap.add_edge("Radichel Hall", "Jackson Hall", 2)
@@ -213,7 +212,6 @@ def initalize_map():
     AshesiMap.add_edge("Engineering Workshop", "Service Centre", 2)
     AshesiMap.add_edge("Natembea Health Centre", "Engineering Workshop", 3)
     AshesiMap.add_edge("Fab Lab", "Natembea Health Centre", 1)
-    AshesiMap.add_edge("King Engineering Building", "Fab Lab", 15)
     AshesiMap.add_edge("Green Gate", "Fab Lab", 10)
     AshesiMap.add_edge("Warren Library", "Green Gate", 2)
     AshesiMap.add_edge("King Engineering Building", "Green Gate", 5)
@@ -391,7 +389,7 @@ if __name__ == "__main__":
     navigation_frame.grid(row=0, column=0, sticky="nsew")
     navigation_frame.grid_rowconfigure(4, weight=1)
 
-    navigation_frame_label = customtkinter.CTkLabel(navigation_frame, text="  Image Example",
+    navigation_frame_label = customtkinter.CTkLabel(navigation_frame, text="Welcome!",
                                                          compound="left",
                                                          font=customtkinter.CTkFont(size=15, weight="bold"))
     navigation_frame_label.grid(row=0, column=0, padx=20, pady=20)
