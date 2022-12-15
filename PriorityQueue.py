@@ -1,5 +1,6 @@
 from heapq import heappush, heappop
 class PriorityQueue:
+    """This class represents a priority queue. This queue is used to represent the frontier in the search"""
 
     def __init__(self, iterable=[]):
         self.heap = []

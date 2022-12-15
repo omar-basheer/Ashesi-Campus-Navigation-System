@@ -1,4 +1,5 @@
 class Graph:
+    """This class represents a graph instance. The graph is used to model paths between landmarks"""
     def __init__(self):
         self.adjacency_list = dict()
 
