@@ -355,7 +355,7 @@ def change_appearance_mode_event(new_appearance_mode):
     customtkinter.set_appearance_mode(new_appearance_mode)
 
 
-def login():
+def search():
     start = combobox_1.get()
     destination = combobox_2.get()
 
@@ -374,7 +374,7 @@ def login():
 
 
 if __name__ == "__main__":
-    customtkinter.set_appearance_mode("light")
+    customtkinter.set_appearance_mode("dark")
     customtkinter.set_default_color_theme("green")
 
     root = customtkinter.CTk()
@@ -429,7 +429,7 @@ if __name__ == "__main__":
     combobox_2 = customtkinter.CTkComboBox(home_frame, values=landmarks)
     combobox_2.grid(row=3, column=0, pady=10, padx=10)
 
-    button_1 = customtkinter.CTkButton(home_frame, command=login)
+    button_1 = customtkinter.CTkButton(home_frame, text="Search", command=search)
     button_1.grid(row=4, column=0, pady=10, padx=10)
 
     root.mainloop()
