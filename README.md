@@ -1,4 +1,4 @@
-# Campus_Navigation_System
+# Ashesi Campus Navigation System
 
 ### Introduction
 Ashesi University is a private, non-profit university located in Berekuso, Ghana. The university is situated on about one hundred acres of land 
